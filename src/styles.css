@@ -1,7 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap");
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap");
 
 @custom-variant dark (&:is(.dark *));
 
@@ -77,6 +77,11 @@
   --font-body: "Inter", system-ui, sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+  background: radial-gradient(circle at top, oklch(0.98 0.01 85), oklch(0.955 0.025 80));
+}
+
 @layer base {
   * {
     border-color: var(--color-border);
@@ -85,10 +90,19 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-body);
+    background-image:
+      radial-gradient(circle at 20% 0%, oklch(0.78 0.08 90 / 0.15), transparent 30%),
+      radial-gradient(circle at 80% 10%, oklch(0.4 0.04 130 / 0.12), transparent 26%);
+    background-attachment: fixed;
+    text-rendering: geometricPrecision;
   }
   h1, h2, h3, h4, .font-display {
     font-family: var(--font-display);
     letter-spacing: -0.01em;
+  }
+  ::selection {
+    background: oklch(0.72 0.13 75);
+    color: oklch(0.18 0.01 80);
   }
   .text-gold {
     background: var(--gradient-gold);

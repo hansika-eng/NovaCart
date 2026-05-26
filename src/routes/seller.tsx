@@ -1,15 +1,21 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { Outlet, createFileRoute } from "@tanstack/react-router";
 import { DashboardShell } from "@/components/DashboardShell";
 import {
+  LayoutDashboard,
   Upload,
   TrendingUp,
   DollarSign,
   Package,
+  ShoppingCart,
   Users,
   Sparkles,
   ArrowUpRight,
   ArrowDown,
   ArrowUp,
+  Boxes,
+  MessageSquare,
+  Star,
+  Settings,
 } from "lucide-react";
 import {
   AreaChart,
@@ -39,6 +45,17 @@ export const Route = createFileRoute("/seller")({
   }),
   component: SellerDashboard,
 });
+
+const sellerNavItems = [
+  { to: "/seller", label: "Overview", icon: LayoutDashboard },
+  { to: "/seller/products", label: "Products", icon: Package },
+  { to: "/seller/orders", label: "Orders", icon: ShoppingCart },
+  { to: "/seller/analytics", label: "Analytics", icon: TrendingUp },
+  { to: "/seller/inventory", label: "Inventory", icon: Boxes },
+  { to: "/seller/reviews", label: "Reviews", icon: Star },
+  { to: "/seller/messages", label: "Messages", icon: MessageSquare },
+  { to: "/seller/settings", label: "Settings", icon: Settings },
+];
 
 const salesData = [
   { m: "Jan", v: 18, p: 14 },
@@ -81,6 +98,7 @@ function SellerDashboard() {
       title="Atelier overview"
       subtitle="Seller workspace"
       user={{ name: "Maison Luca", role: "Verified Atelier", initials: "ML" }}
+      navItems={sellerNavItems}
     >
       {/* Stat row */}
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
@@ -320,6 +338,8 @@ function SellerDashboard() {
           </div>
         </section>
       </div>
+
+      <Outlet />
     </DashboardShell>
   );
 }

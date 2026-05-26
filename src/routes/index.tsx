@@ -75,9 +75,9 @@ function Landing() {
           <nav className="hidden md:flex items-center gap-10 text-sm">
             {[
               { label: "Home", to: "/" },
-              { label: "Shop", to: "/dashboard" },
+              { label: "Shop", to: "/shop" },
               { label: "Seller", to: "/seller" },
-              { label: "Contact", to: "/" },
+              { label: "Contact", to: "/contact" },
             ].map((l) => (
               <Link
                 key={l.label}
@@ -125,21 +125,21 @@ function Landing() {
               from atelier ready-to-wear to fragrance and timepieces.
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
-              <a
-                href="#"
+              <Link
+                to="/shop"
                 className="group inline-flex items-center gap-3 bg-primary text-primary-foreground pl-7 pr-2 py-2 rounded-full text-sm tracking-wide hover:bg-foreground transition"
               >
                 Discover the edit
                 <span className="h-10 w-10 rounded-full bg-accent text-accent-foreground grid place-items-center group-hover:rotate-45 transition-transform">
                   <ArrowUpRight className="h-4 w-4" strokeWidth={1.75} />
                 </span>
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="/contact"
                 className="inline-flex items-center px-7 py-4 text-sm tracking-wide border border-foreground/30 rounded-full hover:bg-foreground hover:text-background transition"
               >
                 Become a member
-              </a>
+              </Link>
             </div>
 
             <div className="mt-14 grid grid-cols-3 gap-8 max-w-lg">

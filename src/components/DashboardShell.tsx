@@ -1,22 +1,25 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { ShoppingBag, LayoutDashboard, Store, Bell, Search, Home } from "lucide-react";
+import { ShoppingBag, Bell, Search } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import type { ReactNode } from "react";
 
-const nav = [
-  { to: "/", label: "Home", icon: Home },
-  { to: "/dashboard", label: "Customer", icon: LayoutDashboard },
-  { to: "/seller", label: "Seller", icon: Store },
-];
+export type DashboardNavItem = {
+  to: string;
+  label: string;
+  icon: LucideIcon;
+};
 
 export function DashboardShell({
   title,
   subtitle,
   user,
+  navItems,
   children,
 }: {
   title: string;
   subtitle: string;
   user: { name: string; role: string; initials: string };
+  navItems: DashboardNavItem[];
   children: ReactNode;
 }) {
   const path = useRouterState({ select: (r) => r.location.pathname });
@@ -41,8 +44,8 @@ export function DashboardShell({
           <div className="text-[10px] uppercase tracking-[0.25em] opacity-50 px-3 mb-3">
             Workspace
           </div>
-          {nav.map((n) => {
-            const active = path === n.to;
+          {navItems.map((n) => {
+            const active = path === n.to || path.startsWith(`${n.to}/`);
             return (
               <Link
                 key={n.to}
